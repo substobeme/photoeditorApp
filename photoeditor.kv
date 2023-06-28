@@ -1,0 +1,165 @@
+Interface:
+<Interface>:
+    orientation:"vertical"
+    MDToolbar:
+        title: "MYPhotoAPP"
+        md_bg_color: 1,0.65,0,1
+        pos_hint: {"top":1}
+        right_action_items:[["image",lambda x:root.import1()]] #x represents right action button/item and import1 is function to import image
+    MDBoxLayout:
+        padding:"10dp"
+        spacing:"10dp"
+        MDBoxLayout:
+            md_bg_color: 0.39, 0, 0.39, 0.3
+            Image:
+                id:screen #dont give " " or error
+                source:"placeholder4.webp"
+        
+                
+               
+                
+                
+        MDFloatLayout:
+            md_bg_color: 1,1,1,1
+          
+            MDLabel:
+                text:"Properties"
+                font_size:"60sp"
+                adaptive_height:True
+                pos_hint: {"center_x":0.5}
+                pos: 1, "420dp" #any pos in x but y given
+                halign : "center" #align text inside label
+                font_size: "70sp"
+                
+               
+            MDBoxLayout:
+                adaptive_height:True
+                pos_hint: {"center_x":0.5}
+                pos: 1,"300dp"
+                MDBoxLayout:
+                    orientation: "vertical"
+                    adaptive_height:True
+                    padding:"20dp"
+                    spacing: "20dp"
+                    MDLabel:
+                        
+                        text:"Width"
+                        font_size: "20sp"
+                        halign:"center"
+                    MDTextField:
+                        id:WDH
+                        hint_text: "Enter here"
+                        helper_text: "In pixels"
+                        helper_text_mode:"on_focus"
+                        mode:"rectangle"
+                MDBoxLayout:
+                    orientation: "vertical"
+                    adaptive_height:True
+                    padding:"20dp"
+                    spacing: "20dp"
+                    MDLabel:
+                        
+                        text:"Height"
+                        font_size: "20sp"
+                        halign:"center"
+                    MDTextField:
+                        id:H8
+                        hint_text: "Enter here"
+                        helper_text: "In pixels"
+                        helper_text_mode:"on_focus"
+                        mode:"rectangle"
+            MDBoxLayout:
+                adaptive_height:True
+                pos_hint:{"center_x":0.5}
+                pos:1,"200dp" #fixing y for dummy x
+                padding:"20dp"
+                spacing:"20dp"
+
+                MDLabel:
+                    text: "Rotation:"
+                    font_size:"20sp"
+                    size_hint:0.5,0.75
+                MDTextField:
+                    id:Rotate
+                    hint_text:"Degree"
+                    mode: "rectangle"
+            MDLabel:
+                text:"Options:"
+                pos_hint:{"center_x":0.5}
+                pos:1,"170dp"
+                adaptive_size:True
+                font_size:"20sp"
+            MDBoxLayout:
+                padding:[40,0,0,0]#only left padding,no right,center, padding
+                orientation:"vertical"
+                adaptive_height:True
+                pos_hint:{"center_x":0.5}
+                pos:1,"80dp"
+                MDBoxLayout:
+                    adaptive_height:True
+                    #only checkbox given id as they will decide if effect active or not
+                    MDCheckbox:
+                        id:e1 
+                        size_hint: None,None
+                        size: dp(20),dp(20)
+                        group:"select"
+                    MDLabel:
+                        text:"Find Edges"
+                        font_size: "20sp"
+                        size_hint:None,None
+                        size:dp(150),dp(30)
+                MDBoxLayout:
+                    adaptive_height:True
+                    MDCheckbox:
+                        id:e2
+                        size_hint: None,None
+                        size: dp(20),dp(20)
+                        group:"select"
+                    MDLabel:
+                        text:"Contour"
+                        font_size: "20sp"
+                        size_hint:None,None
+                        size:dp(100),dp(20)
+                MDBoxLayout:
+                    adaptive_height:True
+                    MDCheckbox:
+                        id:e3
+                        size_hint: None,None
+                        size: dp(20),dp(20)
+                        group:"select"
+                    MDLabel:
+                        text:"Blur"
+                        font_size: "20sp"
+                        size_hint:None,None
+                        size:dp(100),dp(20)
+                MDBoxLayout:
+                    adaptive_height:True
+                    MDCheckbox:
+                        id:e4
+                        size_hint: None,None
+                        size: dp(20),dp(20)
+                        group:"select"
+                    MDLabel:
+                        text:"Detail"
+                        font_size: "20sp"
+                        size_hint:None,None
+                        size:dp(100),dp(20)
+            MDBoxLayout:
+                adaptive_size:True
+                spacing:"4dp"
+                pos_hint:{"center_x":0.5}
+                pos:1,"14dp"
+                MDFillRoundFlatButton:
+                    text:"Apply"
+                    md_bg_color: 1,0.35,0,1
+                    on_press:root.apply() #function to apply edits
+                MDFillRoundFlatButton:
+                    text:"Export"
+                    md_bg_color: 1,0.35,0,1
+                    on_press: root.exportImage()#function to export the image
+                
+               
+
+
+
+
