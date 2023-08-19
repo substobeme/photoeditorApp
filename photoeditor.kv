@@ -83,12 +83,7 @@ Interface:
                     id:Rotate
                     hint_text:"Degree"
                     mode: "rectangle"
-            MDLabel:
-                text:"Options:"
-                pos_hint:{"center_x":0.5}
-                pos:1,"170dp"
-                adaptive_size:True
-                font_size:"20sp"
+           
             MDBoxLayout:
                 padding:[40,0,0,0]#only left padding,no right,center, padding
                 orientation:"vertical"
@@ -102,7 +97,7 @@ Interface:
                         id:e1 
                         size_hint: None,None
                         size: dp(20),dp(20)
-                        group:"select"
+                        
                     MDLabel:
                         text:"Find Edges"
                         font_size: "20sp"
@@ -114,7 +109,7 @@ Interface:
                         id:e2
                         size_hint: None,None
                         size: dp(20),dp(20)
-                        group:"select"
+                        
                     MDLabel:
                         text:"Contour"
                         font_size: "20sp"
@@ -126,7 +121,7 @@ Interface:
                         id:e3
                         size_hint: None,None
                         size: dp(20),dp(20)
-                        group:"select"
+                        
                     MDLabel:
                         text:"Blur"
                         font_size: "20sp"
@@ -138,12 +133,37 @@ Interface:
                         id:e4
                         size_hint: None,None
                         size: dp(20),dp(20)
-                        group:"select"
+                        #group:"select" removing this to select multiple, add group back to select one only
                     MDLabel:
                         text:"Detail"
                         font_size: "20sp"
                         size_hint:None,None
                         size:dp(100),dp(20)
+                MDBoxLayout:
+                    adaptive_height:True
+                    MDCheckbox:
+                        id:e5
+                        size_hint: None, None
+                        size: dp(20), dp(20)
+            
+                    MDLabel:
+                        text: "Sharpen"
+                        font_size: "20sp"
+                        size_hint: None, None
+                        size: dp(100), dp(20)
+
+                MDBoxLayout:
+                    adaptive_height:True
+                    MDCheckbox:
+                        id:e6
+                        size_hint: None, None
+                        size: dp(20), dp(20)
+            
+                    MDLabel:
+                        text: "Grayscale"
+                        font_size: "20sp"
+                        size_hint: None, None
+                        size: dp(100), dp(20)
             MDBoxLayout:
                 adaptive_size:True
                 spacing:"4dp"
@@ -154,10 +174,10 @@ Interface:
                     md_bg_color: 1,0.35,0,1
                     on_press:root.apply() #function to apply edits
                 MDFillRoundFlatButton:
-                    text:"Export"
+                    text:"Save As"
                     md_bg_color: 1,0.35,0,1
                     on_press: root.exportImage()#function to export the image
-                
+                      
                
 
 
