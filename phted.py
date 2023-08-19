@@ -27,20 +27,33 @@ class Interface(MDBoxLayout):
         #Rotation
         rotated= resized.rotate(int(self.ids.Rotate.text))#taking input from user in textfield,converting to integer and rotating
         #options on image
-        if self.ids.e1.active:#if checkbox selected
-            self.final_edit = rotated.filter(ImageFilter.FIND_EDGES)
-        elif self.ids.e2.active:#if checkbox selected
-            self.final_edit = rotated.filter(ImageFilter.CONTOUR)
-        elif self.ids.e3.active:#if checkbox selected
-            self.final_edit = rotated.filter(ImageFilter.BLUR)
-        elif self.ids.e4.active:#if checkbox selected
-            self.final_edit = rotated.filter(ImageFilter.DETAIL)
-        else:
-            self.final_edit=rotated
+         # List to store selected effects
+        selected_effects = []
+        if self.ids.e1.active:
+            selected_effects.append(ImageFilter.FIND_EDGES)
+        if self.ids.e2.active:
+            selected_effects.append(ImageFilter.CONTOUR)
+        if self.ids.e3.active:
+            selected_effects.append(ImageFilter.BLUR)
+        if self.ids.e4.active:
+            selected_effects.append(ImageFilter.DETAIL)
+        if self.ids.e5.active:
+            selected_effects.append(ImageFilter.SHARPEN)
+        if self.ids.e6.active:
+            selected_effects.append("grayscale")
+        
+        
+        
+        # Apply selected effects
+        self.final_edit = rotated
+        for effect in selected_effects:
+            if effect == "grayscale":
+                self.final_edit = self.final_edit.convert("L")  # Convert to grayscale
+            else:
+                self.final_edit = self.final_edit.filter(effect)
+       
 
 
-        #all steps below for displaying to user how edit will look/display
-        # #store in memory in bytes temporarily then read it back for seeing edited image 
         data=BytesIO()
         self.final_edit.save(data,format='png') #pointer at end after saving so need to move to front using seek function
         data.seek(0) #0 is begging, 1 is current position, 2 is end
