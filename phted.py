@@ -56,7 +56,7 @@ class Interface(MDBoxLayout):
 
         data=BytesIO()
         self.final_edit.save(data,format='png') #pointer at end after saving so need to move to front using seek function
-        data.seek(0) #0 is begging, 1 is current position, 2 is end
+        data.seek(0) #0 is beggining, 1 is current position, 2 is end
         b= BytesIO(data.read())#reading the data and converting to Bytes object
         img1=I(b,ext='png')#convert byte object to kivy object which is image/texture
         self.ids.screen.texture=img1.texture
